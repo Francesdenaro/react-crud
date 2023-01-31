@@ -49,7 +49,7 @@ const NewPost = () => {
 			</div>
 			<button
 				type='submit'
-				className='rounded-lg bg-sky-600 px-4 py-2 text-white'
+				className='rounded-lg bg-sky-600 px-4 py-2 text-white transition duration-300 hover:bg-sky-700'
 			>
 				+ Add post
 			</button>

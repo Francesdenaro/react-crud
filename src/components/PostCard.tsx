@@ -106,9 +106,11 @@ const PostCard = ({ post }: { post: Post }) => {
 					inEdition ? 'opacity-100' : 'opacity-0'
 				} transition-opacity duration-300 group-hover:opacity-100`}
 			>
-				<Button color='green' onClick={() => saveCard()}>
-					<FaSave className='text-white' /> Save
-				</Button>
+				{inEdition && (
+					<Button color='green' onClick={() => saveCard()}>
+						<FaSave className='text-white' /> Save
+					</Button>
+				)}
 				<Button
 					color={inEdition ? 'gray' : 'sky'}
 					onClick={() => setInEdition(prev => !prev)}

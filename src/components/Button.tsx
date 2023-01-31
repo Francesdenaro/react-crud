@@ -7,7 +7,18 @@ const Button = ({
 	onClick: () => void
 	color?: string
 }) => {
-	const getColor = (color: string) => `bg-${color}-600 hover:bg-${color}-400`
+	const getColor = (color: string) => {
+		switch (color) {
+			case 'green':
+				return 'bg-green-600 hover:bg-green-700'
+			case 'red':
+				return 'bg-red-600 hover:bg-red-700'
+			case 'sky':
+				return 'bg-sky-600 hover:bg-sky-700'
+			default:
+				return 'bg-gray-600 hover:bg-gray-700'
+		}
+	}
 
 	return (
 		<button
