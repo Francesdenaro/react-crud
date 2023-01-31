@@ -72,12 +72,12 @@ const updatePost = asyncHandler(async (req, res) => {
  * @access  Public
  */
 const deletePost = asyncHandler(async (req, res) => {
-	const { _id } = req.body
-
 	try {
-		const deletedPost = await Post.findByIdAndDelete(_id)
-
-		res.status(204).send(deletedPost).json({ message: 'Post deleted' })
+		await Post.deleteOne({
+			_id: req.params.id,
+		})
+		console.log('Post deleted')
+		res.status(204).json({ message: 'Post deleted' })
 	} catch (error) {
 		console.log(error)
 		res.status(500).json({ message: 'error' })

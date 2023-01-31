@@ -9,6 +9,10 @@ const postSchema = mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	updatedAt: {
+		type: Date,
+		default: Date.now,
+	},
 })
 
 module.exports = mongoose.model('Post', postSchema)
