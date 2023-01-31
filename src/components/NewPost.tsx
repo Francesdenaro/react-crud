@@ -23,7 +23,7 @@ const NewPost = () => {
 	return (
 		<form
 			onSubmit={e => handleSubmit(e)}
-			className='flex w-full max-w-4xl flex-col items-start gap-8 rounded-xl bg-white py-8 px-12'
+			className='flex w-full max-w-4xl flex-col items-start gap-8 rounded-xl bg-white py-8 px-12 shadow'
 		>
 			<h2 className='text-3xl font-bold text-sky-600'>Add new post</h2>
 			<div className='flex flex-col gap-2'>

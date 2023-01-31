@@ -43,23 +43,24 @@ const createPost = asyncHandler(async (req, res) => {
  * @access  Public
  */
 const updatePost = asyncHandler(async (req, res) => {
-	const { _id, updateTitle, updateBody } = req.body
+	const { title, body, titleUpdated, bodyUpdated } = req.body
+	const _id = req.params.id
 
-	if (!updateTitle && !updateBody) {
+	if (!titleUpdated && !bodyUpdated) {
 		res.status(400).json({ message: 'No fields to update' })
 	}
 
 	const newPost = {
-		...(updateTitle && { title: updateTitle }),
-		...(updateBody && { body: updateBody }),
+		...(titleUpdated && { title }),
+		...(bodyUpdated && { body }),
 	}
 
 	try {
-		const updatedPost = await Post.findByIdAndUpdate(_id, {
+		await Post.findByIdAndUpdate(_id, {
 			$set: newPost,
 		})
 
-		res.status(204).send(updatedPost).json({ message: 'Post updated' })
+		res.status(204).json({ message: 'Post updated' })
 	} catch (error) {
 		console.log(error)
 		res.status(500).json({ message: 'error' })
