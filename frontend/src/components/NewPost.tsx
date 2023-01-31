@@ -10,14 +10,21 @@ const NewPost = () => {
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		await fetch(`${apiURL}/posts`, {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ title, body }),
-		})
-		ctx.setRefresh(!ctx.refresh)
-
-		toast.success('Posts added successfully!')
+		try {
+			await fetch(`${apiURL}/posts`, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ title, body }),
+			})
+			ctx.setRefresh(!ctx.refresh)
+			setTitle('')
+			setBody('')
+			toast.loading('Adding posts...')
+			toast.success('Posts added successfully!')
+		} catch (error) {
+			console.error(error)
+			toast.error('Something went wrong')
+		}
 	}
 
 	return (
