@@ -17,6 +17,7 @@ function App() {
 	const [refresh, setRefresh] = useState(false)
 	return (
 		<AppContext.Provider value={{ refresh, setRefresh }}>
+			<Toaster />
 			<div className='flex min-h-screen flex-col items-center gap-12 bg-sky-200 py-10'>
 				<NewPost />
 				<PostList />
