@@ -3,6 +3,7 @@ import { Post } from '../Types'
 import PostCard from './PostCard'
 import { useContext } from 'react'
 import { apiURL, AppContext } from '../App'
+import toast from 'react-hot-toast'
 
 const PostList = () => {
 	const [posts, setPosts] = useState<Array<Post>>([])
@@ -10,6 +11,7 @@ const PostList = () => {
 	const [isLoaded, setIsLoaded] = useState(false)
 
 	const fetchPosts = async () => {
+		toast.loading('Loading posts...')
 		setIsLoaded(false)
 		const response = await fetch(`${apiURL}/posts`)
 		const data = await response.json()
@@ -18,7 +20,10 @@ const PostList = () => {
 	}
 
 	useEffect(() => {
-		fetchPosts().then(data => setPosts(data))
+		fetchPosts().then(data => {
+			setPosts(data)
+			toast.dismiss()
+		})
 	}, [ctx.refresh])
 
 	return (
@@ -28,7 +33,7 @@ const PostList = () => {
 			{isLoaded ? (
 				posts.map(post => <PostCard key={post._id} post={post} />)
 			) : (
-				<div>Loading...</div>
+				<div></div>
 			)}
 		</div>
 	)

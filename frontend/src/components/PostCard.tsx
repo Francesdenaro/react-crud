@@ -22,10 +22,12 @@ const PostCard = ({ post }: { post: Post }) => {
 	const deletePost = async (id: number) => {
 		console.log(id)
 		try {
+			toast.loading('Deleting post...')
 			const res = await fetch(`${apiURL}/posts/${id}`, {
 				method: 'DELETE',
 			})
 			console.log(res)
+			toast.dismiss()
 			toast.success('Post deleted')
 			ctx.setRefresh(!ctx.refresh)
 		} catch (error) {
@@ -44,6 +46,7 @@ const PostCard = ({ post }: { post: Post }) => {
 				: { body: currentData.body }),
 		}
 		try {
+			toast.loading('Updating post...')
 			await fetch(`${apiURL}/posts/${post._id}`, {
 				method: 'PUT',
 				headers: {
@@ -57,10 +60,12 @@ const PostCard = ({ post }: { post: Post }) => {
 				}),
 			})
 			setCurrentData(current)
-			toast.success('Post updated')
 			setInEdition(false)
+			toast.dismiss()
+			toast.success('Post updated')
 		} catch (error) {
 			console.error(error)
+			toast.dismiss()
 			toast.error('Something went wrong')
 		}
 	}
