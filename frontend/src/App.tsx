@@ -8,6 +8,13 @@ interface AppContextProps {
 	setRefresh: React.Dispatch<React.SetStateAction<boolean>>
 }
 
+console.log(import.meta.env.VITE_ENVIRONMENT)
+
+export const apiURL =
+	import.meta.env.VITE_ENVIRONMENT === 'development'
+		? 'http://localhost:8000'
+		: 'https://react-feed-backend.vercel.app'
+
 export const AppContext = createContext<AppContextProps>({
 	refresh: false,
 	setRefresh: () => {},

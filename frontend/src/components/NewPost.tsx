@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useContext } from 'react'
-import { AppContext } from '../App'
+import { apiURL, AppContext } from '../App'
 import { toast } from 'react-hot-toast'
 
 const NewPost = () => {
@@ -10,7 +10,7 @@ const NewPost = () => {
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		await fetch('http://localhost:8000/posts', {
+		await fetch(`${apiURL}/posts`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ title, body }),

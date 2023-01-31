@@ -1,7 +1,7 @@
 import { Post } from '../Types'
 import { FaPencilAlt, FaSave, FaTrashAlt } from 'react-icons/fa'
 import toast from 'react-hot-toast'
-import { AppContext } from '../App'
+import { apiURL, AppContext } from '../App'
 import { useContext, useState } from 'react'
 import Button from './Button'
 
@@ -22,7 +22,7 @@ const PostCard = ({ post }: { post: Post }) => {
 	const deletePost = async (id: number) => {
 		console.log(id)
 		try {
-			const res = await fetch(`http://localhost:8000/posts/${id}`, {
+			const res = await fetch(`${apiURL}/posts/${id}`, {
 				method: 'DELETE',
 			})
 			console.log(res)
@@ -44,7 +44,7 @@ const PostCard = ({ post }: { post: Post }) => {
 				: { body: currentData.body }),
 		}
 		try {
-			await fetch(`http://localhost:8000/posts/${post._id}`, {
+			await fetch(`${apiURL}/posts/${post._id}`, {
 				method: 'PUT',
 				headers: {
 					'Content-Type': 'application/json',

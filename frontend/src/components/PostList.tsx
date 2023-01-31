@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Post } from '../Types'
 import PostCard from './PostCard'
 import { useContext } from 'react'
-import { AppContext } from '../App'
+import { apiURL, AppContext } from '../App'
 
 const PostList = () => {
 	const [posts, setPosts] = useState<Array<Post>>([])
@@ -11,7 +11,7 @@ const PostList = () => {
 
 	const fetchPosts = async () => {
 		setIsLoaded(false)
-		const response = await fetch('http://localhost:8000/posts')
+		const response = await fetch(`${apiURL}/posts`)
 		const data = await response.json()
 		setIsLoaded(true)
 		return data
