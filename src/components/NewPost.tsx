@@ -15,7 +15,7 @@ const NewPost = () => {
 				<label htmlFor='body'>Body</label>
 				<textarea
 					name='body'
-					className='rounded-lg border-2 border-gray-300 focus:border-2 focus:border-sky-600 focus:outline-none'
+					className='h-24 rounded-lg border-2 border-gray-300 p-2 focus:border-2 focus:border-sky-600 focus:outline-none'
 					id='body'
 				/>
 			</div>
@@ -23,7 +23,7 @@ const NewPost = () => {
 				type='submit'
 				className='rounded-lg bg-sky-600 px-4 py-2 text-white'
 			>
-				Submit
+				+ Add post
 			</button>
 		</form>
 	)
