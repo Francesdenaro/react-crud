@@ -17,10 +17,9 @@ const NewPost = () => {
 				body: JSON.stringify({ title, body }),
 			})
 			ctx.setRefresh(!ctx.refresh)
+			toast.success('Posts added successfully!')
 			setTitle('')
 			setBody('')
-			toast.loading('Adding posts...')
-			toast.success('Posts added successfully!')
 		} catch (error) {
 			console.error(error)
 			toast.error('Something went wrong')
