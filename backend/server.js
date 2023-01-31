@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
 const connectDB = require('./config/db')
 const {
 	getPosts,
@@ -10,6 +11,9 @@ const {
 const port = process.env.PORT || 8000
 
 connectDB()
+
+app.use(express.json())
+app.use(cors())
 
 app.get('/posts', getPosts)
 app.post('/posts', createPost)

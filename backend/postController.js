@@ -26,7 +26,6 @@ const createPost = asyncHandler(async (req, res) => {
 
 		const post = new Post({
 			title,
-			description,
 			body,
 		})
 
