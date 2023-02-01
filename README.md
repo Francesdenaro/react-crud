@@ -12,3 +12,10 @@ The posts are stored in a MongoDB database.
 - Typescript
 - Vite
 - TailwindCSS
+
+## Deployed version
+Live deployed version available [here](https://react-feed-lyart.vercel.app/)
+
+## Quick Demo
+
+[Video demo](https://user-images.githubusercontent.com/26060576/216013039-c967f748-86bf-440c-9b25-81ae69aee6b5.mov)
